@@ -1,7 +1,7 @@
 from src.app import app, socketio, emit
 import requests
-from src.app.services.consumer import consumer
-message = consumer()
+# from src.app.services.consumer import consumer
+
 
 
 class Controller:
@@ -18,8 +18,11 @@ class Controller:
     def search(self, query):
         pass
 
-    def run(self):
-        # for message in messages:
+    def run(self, message):
+        print("Received message: {}".format(message))
+        # Messages.append(message.data)
+        message.ack()
+        message = message.data
         if message.action == "openBible":
             data = self.get_bible(message.query, "kjv")
             socketio.emit("result", {"data": data}, namespace="/marvis")
