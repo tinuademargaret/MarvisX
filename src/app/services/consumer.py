@@ -27,9 +27,11 @@ def callback(message):
 
 
 def consumer():
+    print('i got here 1')
     streaming_pull_future = subscriber.subscribe(
-        subscription_path, callback=controller.run
+        subscription_path, callback=callback
     )
+    print('i got here 2')
     print("Listening for messages on {}..\n".format(subscription_path))
 
     # result() in a future will block indefinitely if `timeout` is not set,

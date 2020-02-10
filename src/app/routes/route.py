@@ -1,6 +1,7 @@
 from src.app.controllers.controller import *
 from flask import render_template
 from src.app.services.consumer import consumer
+controller = Controller
 
 
 @app.route("/index")
@@ -11,7 +12,10 @@ def index():
 @socketio.on('connect', namespace='/marvis')
 def test_connect():
     print('Client connected')
-    consumer()
+    return consumer()
+
+
+
 
 
 
