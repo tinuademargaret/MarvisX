@@ -6,7 +6,7 @@
 
   </head>
     <body>
-      <div id="log" style="width:600px; height:300px">
+      <div id="log" style="width:1000px; height:300px">
 
         <h1>WELCOME TO CHURCH!</h1>
 
@@ -17,10 +17,9 @@
     //receive details from server
     socket.on('result', function(msg) {
         console.log("Received result");
-        //maintain a list of ten numbers
-
-        $('#log').html(msg.data);
-        });
-</script>
+        document.getElementById("log").innerHTML = JSON.stringify(msg.data);
+                });
+   </script>
     </body>
 </html>
+
